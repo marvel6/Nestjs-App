@@ -3,12 +3,6 @@ import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestj
 @Controller('users')
 export class UsersController {
 
-    /*
-
-
-
-    */
-
     @Get()
     findAll(@Query('role') role?: 'ADMIN' | 'USER' | 'SUPER_ADMIN') {
         return role.toLowerCase()
