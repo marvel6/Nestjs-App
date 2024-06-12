@@ -18,14 +18,15 @@ export class UsersController {
     }
 
     @Post()
-    createUser(@Body() user: {}) {
+    createUser(@Body() user: { name: string, email: string, role: "ADMIN" | "ENGINEER" | "INTERN" }) {
+
         return this.userService.createUser(user)
     }
 
     @Patch(':id')
-    updateUser(@Param('id') id: string, @Body() updateUser: {}) {
+    updateUser(@Param('id') id: string, @Body() updateUser: { name: string, email: string, role: "ADMIN" | "ENGINEER" | "INTERN" }) {
 
-        return { id, ...updateUser }
+        return this.userService.updateUser(+id,updateUser)
     }
 
     @Delete(':id')
